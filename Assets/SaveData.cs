@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 // 데이터 저장 샘플
 public class SaveData : MonoBehaviour
 {
+    public TMP_Text text;
+
     [System.Serializable]
     public class HaveItemData
     {
@@ -27,15 +30,28 @@ public class SaveData : MonoBehaviour
         }
         else
             print($"데이터 없음 {haveItemData.version}");
+
+        UpdateVersionText();
     }
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            haveItemData.version++;
-            print($"버전 증가:{haveItemData.version}");
+            VersionUp();
         }
+    }
+
+    public void VersionUp()
+    {
+        haveItemData.version++;
+        print($"버전 증가:{haveItemData.version}");
+        UpdateVersionText();
+    }
+
+    private void UpdateVersionText()
+    {
+        text.text = haveItemData.version.ToString();
     }
 
     // 에디터에서 사용, 휴대폰에서 작동안함(프로세스가 죽어서 저장 못함)

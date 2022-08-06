@@ -7,6 +7,7 @@ public class PlayerPrefsSample : MonoBehaviour
     public int defaultValue = 100;
     string key1 = "key1";
     string key2 = "key2";
+
     void Start()
     {
         print(PlayerPrefs.GetInt(key1, defaultValue)); // 저장된 값 없으므로 100 출력
