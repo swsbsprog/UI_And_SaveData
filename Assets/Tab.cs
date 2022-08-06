@@ -5,7 +5,15 @@ using UnityEngine;
 
 public class Tab : MonoBehaviour
 {
-    internal void Init(Tab item)
+    public Sprite tabIcon;
+    public Sprite[] items;
+
+    internal void Init(GameData item)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void SetActiveSate(bool v)
     {
         throw new NotImplementedException();
     }

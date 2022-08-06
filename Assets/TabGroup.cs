@@ -7,6 +7,8 @@ public class TabGroup : MonoBehaviour
 {
     public Tab baseTab;
     public Tab[] tabs;
+
+    public GameData[] category;
     private void Awake()
     {
         CreateTabs();
@@ -15,7 +17,7 @@ public class TabGroup : MonoBehaviour
 
     private void CreateTabs()
     {
-        foreach (var item in tabs)
+        foreach (var item in category)
         {
             var newTab = Instantiate(baseTab);
             newTab.Init(item);
@@ -24,17 +26,15 @@ public class TabGroup : MonoBehaviour
 
     public void SelectTab(int tabIndex)
     {
-        var currentTab = tabs[tabIndex];
-        CreateItems(currentTab);
-    }
-
-    private void CreateItems(Tab currentTab)
-    {
-        throw new NotImplementedException();
+        for (int i = 0; i < tabs.Length; i++)
+        {
+            tabs[i].SetActiveSate(tabIndex == i);
+        }
     }
 }
+
 [System.Serializable]
-public class TabInfo
+public class GameData
 {
     public Sprite tabIcon;
     public Sprite[] items;
