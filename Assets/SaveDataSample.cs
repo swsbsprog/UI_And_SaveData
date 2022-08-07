@@ -1,10 +1,10 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-// µ¥ÀÌÅÍ ÀúÀå »ùÇÃ
+// ë°ì´í„° ì €ì¥ ìƒ˜í”Œ
 public class SaveDataSample : MonoBehaviour
 {
     public TMP_Text text;
@@ -17,49 +17,38 @@ public class SaveDataSample : MonoBehaviour
         if (!string.IsNullOrEmpty(json))
         {
             userData = JsonUtility.FromJson<UserData>(json);
-            print($"µ¥ÀÌÅÍ ÀĞÀ½ {userData.version}");
+            print($"ë°ì´í„° ì½ìŒ {userData.version}");
         }
         else
-            print($"µ¥ÀÌÅÍ ¾øÀ½ {userData.version}");
+            print($"ë°ì´í„° ì—†ìŒ {userData.version}");
 
         UpdateVersionText();
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            VersionUp();
-        }
     }
 
     public void VersionUp()
     {
         userData.version++;
-        print($"¹öÀü Áõ°¡:{userData.version}");
+        print($"ë²„ì „ ì¦ê°€:{userData.version}");
         UpdateVersionText();
     }
 
-    private void UpdateVersionText()
-    {
-        text.text = userData.version.ToString();
-    }
+    private void UpdateVersionText() => text.text = userData.version.ToString();
 
-    // ¿¡µğÅÍ¿¡¼­ »ç¿ë, ÈŞ´ëÆù¿¡¼­ ÀÛµ¿¾ÈÇÔ(ÇÁ·Î¼¼½º°¡ Á×¾î¼­ ÀúÀå ¸øÇÔ)
+    // ì—ë””í„°ì—ì„œ ì‚¬ìš©, íœ´ëŒ€í°ì—ì„œ ì‘ë™ì•ˆí•¨(í”„ë¡œì„¸ìŠ¤ê°€ ì£½ì–´ì„œ ì €ì¥ ëª»í•¨)
     private void OnDestroy() => SaveSerializeData();
 
 
-    // ÈŞ´ëÆù¿¡¼­ »ç¿ë.(¾Û ²ô±â À§ÇØ¼­ ºñÈ°¼ºÈ­ ÇÒ¶§ ÀúÀå)
-    void OnApplicationPause(bool pauseStatus) // pauseStatus == true -> ¾ÛÀÌ ¸ØÃè´Ù
+    // íœ´ëŒ€í°ì—ì„œ ì‚¬ìš©.(ì•± ë„ê¸° ìœ„í•´ì„œ ë¹„í™œì„±í™” í• ë•Œ ì €ì¥)
+    void OnApplicationPause(bool pauseStatus) // pauseStatus == true -> ì•±ì´ ë©ˆì·„ë‹¤
     {
-        print($"pauseStatus:{(pauseStatus?"¸ØÃè´Ù":"´Ù½Ã½ÃÀÛ")}");
-        if(pauseStatus)
+        print($"pauseStatus:{(pauseStatus ? "ë©ˆì·„ë‹¤" : "ë‹¤ì‹œì‹œì‘")}");
+        if (pauseStatus)
             SaveSerializeData();
     }
 
     private void SaveSerializeData()
     {
-        print($"µ¥ÀÌÅÍ ÀúÀå");
+        print($"ë°ì´í„° ì €ì¥");
         string json = JsonUtility.ToJson(userData);
         PlayerPrefs.SetString(UserData.Key, json);
         PlayerPrefs.Save();
@@ -67,11 +56,13 @@ public class SaveDataSample : MonoBehaviour
     [System.Serializable]
     public class UserData
     {
-        public const string Key = nameof(UserData);
+        public const string Key = nameof(UserData); //"UserData"
         public int version = 1;
         public int gold;
         public int score;
         public bool useSound;
         public List<string> haveItem = new List<string>();
+        //public Dictionary<string, string> haveItemDic = new(); //ì§ì—´í™” ì•ˆë¨
+        //public HashSet<string> haveItemSet = new(); ì§ì—´í™” ì•ˆë¨
     }
 }

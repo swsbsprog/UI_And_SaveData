@@ -26,14 +26,12 @@ public class SaveData : MonoBehaviour
     // 휴대폰에서 사용.(앱 끄기 위해서 비활성화 할때 저장)
     void OnApplicationPause(bool pauseStatus) // pauseStatus == true -> 앱이 멈췄다
     {
-        print($"pauseStatus:{(pauseStatus?"멈췄다":"다시시작")}");
         if(pauseStatus)
             SaveSerializeData();
     }
 
     private void SaveSerializeData()
     {
-        print($"데이터 저장");
         string json = JsonUtility.ToJson(userData);
         PlayerPrefs.SetString(UserData.Key, json);
         PlayerPrefs.Save();

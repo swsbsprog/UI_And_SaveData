@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,26 +10,26 @@ public class PlayerPrefsSample : MonoBehaviour
 
     void Start()
     {
-        print(PlayerPrefs.GetInt(key1, defaultValue)); // ÀúÀåµÈ °ª ¾øÀ¸¹Ç·Î 100 Ãâ·Â
+        print(PlayerPrefs.GetInt(key1, defaultValue)); // ì €ì¥ëœ ê°’ ì—†ìœ¼ë¯€ë¡œ 100 ì¶œë ¥
         //PlayerPrefs.GetFloat(key1); // float
         //PlayerPrefs.GetString(key2);// string
 
-        PlayerPrefs.SetInt(key2, 1); // key2¿¡ 1ÀúÀå
-        print(PlayerPrefs.GetInt(key2, defaultValue)); // ±âº»°ª ÀÖ¾îµµ ÀúÀåµÈ Å°ÀÇ °ªÀÌ ÀÖÀ¸¹Ç·Î 1Ãâ·Â
+        PlayerPrefs.SetInt(key2, 1); // key2ì— 1ì €ì¥
+        print(PlayerPrefs.GetInt(key2, defaultValue)); // ê¸°ë³¸ê°’ ìˆì–´ë„ ì €ì¥ëœ í‚¤ì˜ ê°’ì´ ìˆìœ¼ë¯€ë¡œ 1ì¶œë ¥
 
         
-        PlayerPrefs.Save(); // ÆÄÀÏ¿¡ ÀúÀåÇÏ´Â ·ÎÁ÷Àº ºÎÇÏ°¡ Å©´Ù.
-                            // ±×·¡¼­ ¸Ş¸ğ¸®¿¡ ±â¾ïÇÏ°í ÀÖ´Ù°¡ Æ¯Á¤ Å¸ÀÌ¹Ö(¾Û Á¾·á)¿¡ ÀúÀåÇÑ´Ù.
-                            // ÇÁ·Î¼¼½º °­Á¦ Á¾·á·Î ²ô¸é °ª ÀúÀå¾ÈµÊ(¿¹:ÈŞ´ëÆù ¹èÅÍ¸® ºÎÁ·, ÄÄÇ»ÅÍ Àü¿ø ÄÚµå ²ô±â,..)
-                            // µ¥ÀÌÅÍ ºĞ½ÇÀ» ¸·±â À§ÇØ¼­ ¸Ş¸ğ¸®¿¡ ÀÖ´Â °ª °­Á¦·Î ÀúÀå
+        PlayerPrefs.Save(); // íŒŒì¼ì— ì €ì¥í•˜ëŠ” ë¡œì§ì€ ë¶€í•˜ê°€ í¬ë‹¤.
+                            // ê·¸ë˜ì„œ ë©”ëª¨ë¦¬ì— ê¸°ì–µí•˜ê³  ìˆë‹¤ê°€ íŠ¹ì • íƒ€ì´ë°(ì•± ì¢…ë£Œ)ì— ì €ì¥í•œë‹¤.
+                            // í”„ë¡œì„¸ìŠ¤ ê°•ì œ ì¢…ë£Œë¡œ ë„ë©´ ê°’ ì €ì¥ì•ˆë¨(ì˜ˆ:íœ´ëŒ€í° ë°°í„°ë¦¬ ë¶€ì¡±, ì»´í“¨í„° ì „ì› ì½”ë“œ ë„ê¸°,..)
+                            // ë°ì´í„° ë¶„ì‹¤ì„ ë§‰ê¸° ìœ„í•´ì„œ ë©”ëª¨ë¦¬ì— ìˆëŠ” ê°’ ê°•ì œë¡œ ì €ì¥
 
-        print(PlayerPrefs.HasKey(key2)); // true, ÀúÀåµÈ °ªÀÌ ÀÖ´ÂÁö È®ÀÎ
-        PlayerPrefs.DeleteKey(key2); //ÀúÀåµÈ °ª »èÁ¦
+        print(PlayerPrefs.HasKey(key2)); // true, ì €ì¥ëœ ê°’ì´ ìˆëŠ”ì§€ í™•ì¸
+        PlayerPrefs.DeleteKey(key2); //ì €ì¥ëœ ê°’ ì‚­ì œ
         print(PlayerPrefs.HasKey(key2)); // false
 
-        PlayerPrefs.DeleteAll();// ¸ğµç °ª »èÁ¦.
+        PlayerPrefs.DeleteAll();// ëª¨ë“  ê°’ ì‚­ì œ.
 
-        //UnityEditor.EditorPrefs // <- ¿¡µğÅÍ¿¡¼­ »ç¿ëÇÏ´Â ¹öÀü <- ¹èÆ÷µÇ´Â °ÔÀÓ¿¡ »ç¿ëºÒ°¡.
-        //SaveÇÔ¼ö°¡ ¾ù´Ù. SetÇÒ¶§ ¹Ù·Î ÀúÀåµÈ´Ù.
+        //UnityEditor.EditorPrefs // <- ì—ë””í„°ì—ì„œ ì‚¬ìš©í•˜ëŠ” ë²„ì „ <- ë°°í¬ë˜ëŠ” ê²Œì„ì— ì‚¬ìš©ë¶ˆê°€.
+        //Saveí•¨ìˆ˜ê°€ ì—‡ë‹¤. Setí• ë•Œ ë°”ë¡œ ì €ì¥ëœë‹¤.
     }
 }
